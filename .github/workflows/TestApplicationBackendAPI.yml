@@ -1,8 +1,10 @@
-name: Build and deploy .NET Core application to Web App TestApplicationAPI
+name: Build and deploy .NET Core application to Web App TestApplicationBackendAPI
 on:
-  workflow_dispatch:
+  push:
+    branches:
+    - main
 env:
-  AZURE_WEBAPP_NAME: TestApplicationAPI
+  AZURE_WEBAPP_NAME: TestApplicationBackendAPI
   AZURE_WEBAPP_PACKAGE_PATH: API\published
   CONFIGURATION: Release
   DOTNET_CORE_VERSION: 7.0.x
@@ -42,5 +44,5 @@ jobs:
       uses: azure/webapps-deploy@v2
       with:
         app-name: ${{ env.AZURE_WEBAPP_NAME }}
-        publish-profile: ${{ secrets.TestApplicationAPI_FBD3 }}
+        publish-profile: ${{ secrets.TestApplicationBackendAPI_6DFF }}
         package: ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}
