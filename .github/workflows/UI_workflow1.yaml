@@ -55,6 +55,7 @@ jobs:
       needs: build      
       steps:
         - name: Download build from the build job
+          if: github.event_name == 'push'
           uses: actions/download-artifact@v3
           with:
             name: angular-app
