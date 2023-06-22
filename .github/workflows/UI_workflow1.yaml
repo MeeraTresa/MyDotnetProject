@@ -23,7 +23,7 @@ jobs:
           - name: Install Angular CLI
             run: npm install -g @angular/cli
           - name: Run automated tests
-            run: ng test --sourceMap=false --browsers=ChromeHeadless --watch=false       
+            run: ng test --browsers=ChromeHeadless --watch=false --code-coverage      
             working-directory: UI
           - name: Build Angular app
             run: ng build --configuration=production
