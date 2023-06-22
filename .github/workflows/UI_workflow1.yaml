@@ -1,0 +1,30 @@
+name: CI
+on:
+    push:
+        branches: [dev]
+jobs:
+    build:
+        runs-on: ubuntu-latest
+        steps:      
+          - name: Checkout project
+            uses: actions/checkout@v2            
+          - name: Set up Node.js
+            uses: actions/setup-node@v2
+            with:
+                node-version: 16
+          - name: Install dependencies
+            run: npm install
+            working-directory: UI
+          - name: Install Angular CLI
+            run: npm install -g @angular/cli
+          - name: Run automated tests
+            run: ng test --code-coverage
+            working-directory: UI
+          - name: Build Angular app
+            run: ng build --configuration=production
+            working-directory: UI
+          - name: Archive artifact
+            uses: actions/upload-artifact@v2
+            with:
+                name: angular-app
+                path: UI/dist/
