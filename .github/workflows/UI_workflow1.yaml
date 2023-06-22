@@ -1,7 +1,13 @@
 name: CI
 on:
-    push:
-        branches: [dev]
+  push:
+      branches:
+          - 'dev'
+  pull_request:
+      types: 
+          - opened
+      branches:
+          - 'dev'
 jobs:
     build:
         runs-on: ubuntu-latest
@@ -36,7 +42,8 @@ jobs:
             if: github.event_name == 'push'
             run: ng build --configuration=production
             working-directory: UI
-          - name: Archive artifact
+          - name: Upload build artifact
+            if: github.event_name == 'push'
             uses: actions/upload-artifact@v2
             with:
                 name: angular-app
