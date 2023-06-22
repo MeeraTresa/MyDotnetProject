@@ -17,8 +17,11 @@ describe('AppComponent', () => {
   });
 
   it(`should have as title 'UI'`, () => {
+    //Arrange
     const fixture = TestBed.createComponent(AppComponent);
+    //Act
     const app = fixture.componentInstance;
+    //Assert
     expect(app.title).toEqual('My Application');
   });
   /*

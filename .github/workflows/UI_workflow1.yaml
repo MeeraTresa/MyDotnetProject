@@ -7,7 +7,12 @@ jobs:
         runs-on: ubuntu-latest
         steps:      
           - name: Checkout project
-            uses: actions/checkout@v2            
+            uses: actions/checkout@v2 
+          - name: Cache node modules
+            uses: actions/cache@v1
+            with:
+              path: ~/.npm
+              key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json')}}                     
           - name: Set up Node.js
             uses: actions/setup-node@v2
             with:
@@ -18,7 +23,7 @@ jobs:
           - name: Install Angular CLI
             run: npm install -g @angular/cli
           - name: Run automated tests
-            run: npm run test-ci            
+            run: ng test --sourceMap=false --browsers=ChromeHeadless --watch=false       
             working-directory: UI
           - name: Build Angular app
             run: ng build --configuration=production
