@@ -20,7 +20,7 @@ jobs:
           - name: Run automated tests
             run: ng test --code-coverage
             env:
-                CI: true
+                CI: false
             working-directory: UI
           - name: Build Angular app
             run: ng build --configuration=production
