@@ -12,7 +12,9 @@ jobs:
             uses: actions/cache@v1
             with:
               path: ~/.npm
-              key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json')}}                     
+              key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json')}} 
+              restore-keys: |
+                ${{ runner.os }}-node-
           - name: Set up Node.js
             uses: actions/setup-node@v2
             with:
@@ -25,7 +27,13 @@ jobs:
           - name: Run automated tests
             run: ng test --browsers=ChromeHeadless --watch=false --code-coverage      
             working-directory: UI
+          - name: Upload Test Coverage
+            uses: actions/upload-artifact@v2
+            with:
+              name: code-coverage
+              path: coverage
           - name: Build Angular app
+            if: github.event_name == 'push'
             run: ng build --configuration=production
             working-directory: UI
           - name: Archive artifact
