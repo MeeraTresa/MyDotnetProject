@@ -18,9 +18,7 @@ jobs:
           - name: Install Angular CLI
             run: npm install -g @angular/cli
           - name: Run automated tests
-            run: ng test --code-coverage
-            env:
-                CI: false
+            run: npm run test-ci            
             working-directory: UI
           - name: Build Angular app
             run: ng build --configuration=production
