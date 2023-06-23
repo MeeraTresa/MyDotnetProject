@@ -75,7 +75,7 @@ jobs:
           id: deploy-to-webapp
           with:
             app-name: 'MyProjectUI'            
-            publish-profile: ${{ secrets.TestApplicationBackendAPI_6DFF }}
+            publish-profile: ${{ secrets.MYPROJECTUIPUBLISHPROFILE }}
             package: UI/dist/
             images: 
         
