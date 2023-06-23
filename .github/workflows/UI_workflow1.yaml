@@ -46,11 +46,10 @@ jobs:
             if: github.event_name == 'push'
             run: ng build --configuration=production
             working-directory: UI
-          - name: Create a Release
-            if: github.event_name == 'push' && github.ref == 'refs/heads/main'
-            run: npx semantic-release
-            env:
-              GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          #- name: Create a Release
+          #  run: npx semantic-release
+          #  env:
+          #    GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           - name: Upload build artifact
             if: github.event_name == 'push'
             uses: actions/upload-artifact@v2
