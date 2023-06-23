@@ -66,16 +66,14 @@ jobs:
           uses: actions/download-artifact@v3
           with:
             name: angular-app
-            path: UI/dist/
         - name: Display structure of downloaded files
           run: ls -R
-          working-directory: UI/dist/
         - name: Deploy to Azure Web App
           uses: azure/webapps-deploy@v2
           id: deploy-to-webapp
           with:
             app-name: 'MyProjectUI'            
             publish-profile: ${{ secrets.MYPROJECTUIPUBLISHPROFILE }}
-            package: UI/dist/
+            package: .
             images: 
         
