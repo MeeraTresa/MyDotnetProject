@@ -7,7 +7,7 @@ import { HttpClient } from '@angular/common/http'
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-  title = 'Hello';
+  title = 'My Application';
   users: any;
   constructor(private http: HttpClient){}
   ngOnInit(): void {
