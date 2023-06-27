@@ -2,6 +2,8 @@ name: 'Protect Main'
 
 on:
   pull_request:
+    branches:
+        - 'main'
 
 jobs:
   check_branch:
