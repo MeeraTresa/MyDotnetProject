@@ -37,5 +37,5 @@ jobs:
           password: ${{ secrets.SENDGRID_API_KEY }}
           subject: "Workflow Failed: ${{ github.event.workflow_run.name }}"
           body: $(cat email-body.txt)
-          to: ${{ secrets.TO_EMAIL }}
+          to: ${{ secrets.FROM_EMAIL }}
           from: ${{ secrets.TO_EMAIL }}
