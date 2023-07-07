@@ -25,4 +25,16 @@ jobs:
           echo "Commit Message: ${{ github.event.workflow_run.head_commit.message }}" >> email-body.txt
           echo "Commit URL: ${{ github.event.workflow_run.head_commit.url }}" >> email-body.txt
           echo "Sender: ${{ github.event.workflow_run.sender.login }}" >> email-body.txt
-          cat email-body.txt | mail -s "Workflow Failed: ${{ github.event.workflow_run.name }}" "$TO_EMAIL"
+          cat email-body.txt
+
+      - name: Send email notification
+        uses: dawidd6/action-send-mail@v3
+        with:
+          server_address: smtp.sendgrid.net
+          server_port: 587
+          username: ${{ secrets.SENDGRID_API_KEY }}
+          password: ${{ secrets.TO_EMAIL }}
+          subject: "Workflow Failed: ${{ github.event.workflow_run.name }}"
+          body: $(cat email-body.txt)
+          to: ${{ secrets.TO_EMAIL }}
+          from: tresams362@gmail.com
