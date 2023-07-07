@@ -25,7 +25,7 @@ jobs:
           echo "Commit: ${{ github.event.workflow_run.head_commit.id }}" >> email-body.txt
           echo "Commit Message: ${{ github.event.workflow_run.head_commit.message }}" >> email-body.txt
           echo "Commit URL: ${{ github.event.workflow_run.head_commit.url }}" >> email-body.txt
-          echo "Sender: ${{ github.event.workflow_run.sender.login }}" >> email-body.txt
+          echo "Sender: ${{ secrets.FROM_EMAIL }}" >> email-body.txt
           cat email-body.txt
 
       - name: Send email notification
