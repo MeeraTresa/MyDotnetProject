@@ -1,3 +1,4 @@
+name: email notifications
 on:
   workflow_run:
     workflows:
@@ -17,7 +18,7 @@ jobs:
           SENDGRID_API_KEY: ${{ secrets.SENDGRID_API_KEY }}
           TO_EMAIL: ${{ secrets.TO_EMAIL }}
         run: |
-          echo "Failed step: ${{ github.event.workflow_run.conclusion }}" > email-body.txt
+          echo "Completed step: ${{ github.event.workflow_run.conclusion }}" > email-body.txt
           echo "Workflow URL: ${{ github.event.workflow_run.html_url }}" >> email-body.txt
           echo "Repository: ${{ github.repository }}" >> email-body.txt
           echo "Branch: ${{ github.event.workflow_run.head_branch }}" >> email-body.txt
@@ -32,7 +33,7 @@ jobs:
         with:
           server_address: smtp.sendgrid.net
           server_port: 587
-          username: ${{ apikey }}
+          username: "apikey"
           password: ${{ secrets.SENDGRID_API_KEY }}
           subject: "Workflow Failed: ${{ github.event.workflow_run.name }}"
           body: $(cat email-body.txt)
