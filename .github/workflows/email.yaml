@@ -38,4 +38,4 @@ jobs:
           subject: "Workflow Failed: ${{ github.event.workflow_run.name }}"
           body: $(cat email-body.txt)
           to: ${{ secrets.TO_EMAIL }}
-          from: tresams362@gmail.com
+          from: ${{ secrets.TO_EMAIL }}
