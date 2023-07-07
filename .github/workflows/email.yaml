@@ -32,8 +32,8 @@ jobs:
         with:
           server_address: smtp.sendgrid.net
           server_port: 587
-          username: ${{ secrets.SENDGRID_API_KEY }}
-          password: ${{ secrets.TO_EMAIL }}
+          username: ${{ apikey }}
+          password: ${{ secrets.SENDGRID_API_KEY }}
           subject: "Workflow Failed: ${{ github.event.workflow_run.name }}"
           body: $(cat email-body.txt)
           to: ${{ secrets.TO_EMAIL }}
