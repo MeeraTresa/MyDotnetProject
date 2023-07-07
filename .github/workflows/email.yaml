@@ -35,7 +35,7 @@ jobs:
           server_port: 587
           username: "apikey"
           password: ${{ secrets.SENDGRID_API_KEY }}
-          subject: "Workflow Failed: ${{ github.event.workflow_run.name }}"
+          subject: "Workflow Completed: ${{ github.event.workflow_run.name }}"
           body: $(cat email-body.txt)
           to: ${{ secrets.FROM_EMAIL }}
           from: ${{ secrets.TO_EMAIL }}
