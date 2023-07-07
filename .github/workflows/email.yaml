@@ -38,4 +38,4 @@ jobs:
           subject: "Workflow Completed: ${{ github.event.workflow_run.name }}"
           body: $(cat email-body.txt)
           to: msebastian@sonicwall.com
-          from: tresams362@gmail.com
+          from: SonicCICD
