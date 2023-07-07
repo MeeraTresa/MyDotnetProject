@@ -31,10 +31,10 @@ jobs:
       - name: Send email notification
         uses: dawidd6/action-send-mail@v3
         with:
-          server_address: smtp.sendgrid.net
-          server_port: 587
-          username: apikey
-          password: ${{ secrets.SENDGRID_API_KEY }}
+          server_address: 10.50.129.54
+          server_port: 465
+          username: "APAdminqa_op"
+          password: "3flatGROUNDtown66"
           subject: "Workflow Completed: ${{ github.event.workflow_run.name }}"
           body: $(cat email-body.txt)
           to: msebastian@sonicwall.com
