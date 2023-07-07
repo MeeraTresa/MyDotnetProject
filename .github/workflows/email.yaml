@@ -1,7 +1,8 @@
 on:
   workflow_run:
     workflows:
-      - 
+      - "CI/CD API"
+      - "CI/CD UI"
     types:
       - completed
 
