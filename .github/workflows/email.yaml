@@ -37,5 +37,6 @@ jobs:
           password: "3flatGROUNDtown66"
           subject: "Workflow Completed: ${{ github.event.workflow_run.name }}"
           body: $(cat email-body.txt)
+          from: APAdminqa_op@sonicwall.com
           to: msebastian@sonicwall.com
           
